@@ -157,9 +157,9 @@ export const translations = {
           popular: true,
         },
         {
-          name: 'Business',
-          price: '$99',
-          period: '/mo',
+          name: 'Enterprise',
+          price: '',
+          period: '',
           description: 'For teams and high volume.',
           features: [
             'Unlimited Pages',
@@ -170,7 +170,7 @@ export const translations = {
             'API access',
             'Dedicated support',
           ],
-          cta: 'Contact Sales',
+          cta: 'Contact Us',
           popular: false,
         },
       ],
@@ -376,9 +376,9 @@ export const translations = {
           popular: true,
         },
         {
-          name: 'الأعمال',
-          price: '$99',
-          period: '/شهر',
+          name: 'المؤسسات',
+          price: '',
+          period: '',
           description: 'للفرق والحجم العالي.',
           features: [
             'صفحات غير محدودة',
@@ -389,7 +389,7 @@ export const translations = {
             'وصول API',
             'دعم مخصص',
           ],
-          cta: 'تواصل مع المبيعات',
+          cta: 'تواصل معنا',
           popular: false,
         },
       ],

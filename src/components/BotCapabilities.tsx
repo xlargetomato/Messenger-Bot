@@ -13,26 +13,26 @@ export default function BotCapabilities() {
       description: 'يفهم البوت ما يقصده العملاء، حتى لو كتبوا بطرق مختلفة أو بأخطاء إملائية.',
       details: ['يتعرف على النية من السياق', 'يفهم اللهجات المختلفة', 'يتعامل مع الأخطاء الإملائية'],
       visual: (
-        <div className="bg-slate-900 p-4 border border-slate-700 h-full">
-          <p className="text-xs text-gray-500 mb-3">رسائل مختلفة، نفس الفهم:</p>
+        <div className="bg-gray-100 dark:bg-slate-900 p-4 border border-gray-300 dark:border-slate-700 h-full">
+          <p className="text-xs text-gray-600 dark:text-gray-500 mb-3">رسائل مختلفة، نفس الفهم:</p>
           <div className="space-y-2">
             <div className="flex items-center gap-2">
               <ArrowRight className="w-3 h-3 text-azure-500" />
-              <span className="bg-slate-800 px-3 py-1.5 text-sm text-gray-300">"كم السعر؟"</span>
+              <span className="bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 px-3 py-1.5 text-sm text-gray-800 dark:text-gray-300">"كم السعر؟"</span>
             </div>
             <div className="flex items-center gap-2">
               <ArrowRight className="w-3 h-3 text-azure-500" />
-              <span className="bg-slate-800 px-3 py-1.5 text-sm text-gray-300">"ابي اعرف الاسعار"</span>
+              <span className="bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 px-3 py-1.5 text-sm text-gray-800 dark:text-gray-300">"ابي اعرف الاسعار"</span>
             </div>
             <div className="flex items-center gap-2">
               <ArrowRight className="w-3 h-3 text-azure-500" />
-              <span className="bg-slate-800 px-3 py-1.5 text-sm text-gray-300">"بكم؟"</span>
+              <span className="bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 px-3 py-1.5 text-sm text-gray-800 dark:text-gray-300">"بكم؟"</span>
             </div>
           </div>
-          <div className="mt-4 pt-3 border-t border-slate-700">
+          <div className="mt-4 pt-3 border-t border-gray-300 dark:border-slate-700">
             <div className="flex items-center gap-2">
               <Check className="w-4 h-4 text-emerald-500" />
-              <span className="text-sm text-emerald-400">تم التعرف: استفسار عن السعر</span>
+              <span className="text-sm text-emerald-600 dark:text-emerald-400">تم التعرف: استفسار عن السعر</span>
             </div>
           </div>
         </div>
@@ -44,22 +44,22 @@ export default function BotCapabilities() {
       description: 'أنشئ محادثات متفرعة تتكيف مع ردود العميل وتوجهه للمسار الصحيح.',
       details: ['تفرعات شرطية متعددة', 'حفظ بيانات المحادثة', 'إعادة استخدام التدفقات'],
       visual: (
-        <div className="bg-slate-900 p-4 border border-slate-700 h-full">
+        <div className="bg-gray-100 dark:bg-slate-900 p-4 border border-gray-300 dark:border-slate-700 h-full">
           <div className="flex flex-col items-center">
             <div className="bg-azure-500 px-4 py-2 text-sm text-white mb-3">هل تريد المساعدة؟</div>
-            <div className="w-px h-4 bg-slate-600" />
+            <div className="w-px h-4 bg-gray-400 dark:bg-slate-600" />
             <div className="flex gap-8">
               <div className="flex flex-col items-center">
-                <div className="w-px h-4 bg-slate-600" />
-                <div className="bg-emerald-600/20 border border-emerald-600/30 px-3 py-1.5 text-xs text-emerald-400">نعم</div>
-                <div className="w-px h-4 bg-slate-600" />
-                <div className="bg-slate-800 px-3 py-1.5 text-xs text-gray-400">عرض الخيارات</div>
+                <div className="w-px h-4 bg-gray-400 dark:bg-slate-600" />
+                <div className="bg-emerald-100 dark:bg-emerald-600/20 border border-emerald-400 dark:border-emerald-600/30 px-3 py-1.5 text-xs text-emerald-700 dark:text-emerald-400">نعم</div>
+                <div className="w-px h-4 bg-gray-400 dark:bg-slate-600" />
+                <div className="bg-gray-200 dark:bg-slate-800 border border-gray-300 dark:border-slate-700 px-3 py-1.5 text-xs text-gray-700 dark:text-gray-400">عرض الخيارات</div>
               </div>
               <div className="flex flex-col items-center">
-                <div className="w-px h-4 bg-slate-600" />
-                <div className="bg-red-600/20 border border-red-600/30 px-3 py-1.5 text-xs text-red-400">لا</div>
-                <div className="w-px h-4 bg-slate-600" />
-                <div className="bg-slate-800 px-3 py-1.5 text-xs text-gray-400">إنهاء المحادثة</div>
+                <div className="w-px h-4 bg-gray-400 dark:bg-slate-600" />
+                <div className="bg-red-100 dark:bg-red-600/20 border border-red-400 dark:border-red-600/30 px-3 py-1.5 text-xs text-red-700 dark:text-red-400">لا</div>
+                <div className="w-px h-4 bg-gray-400 dark:bg-slate-600" />
+                <div className="bg-gray-200 dark:bg-slate-800 border border-gray-300 dark:border-slate-700 px-3 py-1.5 text-xs text-gray-700 dark:text-gray-400">إنهاء المحادثة</div>
               </div>
             </div>
           </div>
@@ -72,16 +72,16 @@ export default function BotCapabilities() {
       description: 'البوت يعمل 24/7 بدون توقف، يرد على العملاء حتى في العطلات وخارج ساعات العمل.',
       details: ['لا يحتاج راحة أو إجازات', 'رد فوري في أي وقت', 'تقليل وقت الانتظار'],
       visual: (
-        <div className="bg-slate-900 p-4 border border-slate-700 h-full flex flex-col items-center justify-center">
+        <div className="bg-gray-100 dark:bg-slate-900 p-4 border border-gray-300 dark:border-slate-700 h-full flex flex-col items-center justify-center">
           <div className="relative">
-            <div className="text-6xl font-bold text-white">24<span className="text-azure-500">/</span>7</div>
+            <div className="text-6xl font-bold text-gray-900 dark:text-white">24<span className="text-azure-500">/</span>7</div>
             <div className="absolute -top-2 -right-2 w-4 h-4 bg-emerald-500 animate-pulse" />
           </div>
-          <p className="text-gray-500 text-sm mt-3">متصل دائماً</p>
+          <p className="text-gray-600 dark:text-gray-500 text-sm mt-3">متصل دائماً</p>
           <div className="flex gap-2 mt-4">
-            <span className="px-2 py-1 bg-slate-800 text-xs text-gray-400">صباحاً</span>
-            <span className="px-2 py-1 bg-slate-800 text-xs text-gray-400">ليلاً</span>
-            <span className="px-2 py-1 bg-slate-800 text-xs text-gray-400">عطلات</span>
+            <span className="px-2 py-1 bg-gray-200 dark:bg-slate-800 border border-gray-300 dark:border-slate-700 text-xs text-gray-700 dark:text-gray-400">صباحاً</span>
+            <span className="px-2 py-1 bg-gray-200 dark:bg-slate-800 border border-gray-300 dark:border-slate-700 text-xs text-gray-700 dark:text-gray-400">ليلاً</span>
+            <span className="px-2 py-1 bg-gray-200 dark:bg-slate-800 border border-gray-300 dark:border-slate-700 text-xs text-gray-700 dark:text-gray-400">عطلات</span>
           </div>
         </div>
       ),
@@ -92,16 +92,16 @@ export default function BotCapabilities() {
       description: 'بياناتك وبيانات عملائك محمية بأعلى معايير الأمان والتشفير.',
       details: ['تشفير البيانات', 'نسخ احتياطي تلقائي', 'توافق مع GDPR'],
       visual: (
-        <div className="bg-slate-900 p-4 border border-slate-700 h-full">
+        <div className="bg-gray-100 dark:bg-slate-900 p-4 border border-gray-300 dark:border-slate-700 h-full">
           <div className="flex items-center justify-center mb-4">
-            <div className="w-16 h-16 bg-emerald-500/20 border-2 border-emerald-500/50 flex items-center justify-center">
-              <Shield className="w-8 h-8 text-emerald-500" />
+            <div className="w-16 h-16 bg-emerald-100 dark:bg-emerald-500/20 border-2 border-emerald-400 dark:border-emerald-500/50 flex items-center justify-center">
+              <Shield className="w-8 h-8 text-emerald-600 dark:text-emerald-500" />
             </div>
           </div>
           <div className="space-y-2">
-            <div className="flex items-center gap-2 text-sm"><Check className="w-4 h-4 text-emerald-500" /><span className="text-gray-400">SSL/TLS Encryption</span></div>
-            <div className="flex items-center gap-2 text-sm"><Check className="w-4 h-4 text-emerald-500" /><span className="text-gray-400">Data Backup</span></div>
-            <div className="flex items-center gap-2 text-sm"><Check className="w-4 h-4 text-emerald-500" /><span className="text-gray-400">GDPR Compliant</span></div>
+            <div className="flex items-center gap-2 text-sm"><Check className="w-4 h-4 text-emerald-500" /><span className="text-gray-700 dark:text-gray-400">SSL/TLS Encryption</span></div>
+            <div className="flex items-center gap-2 text-sm"><Check className="w-4 h-4 text-emerald-500" /><span className="text-gray-700 dark:text-gray-400">Data Backup</span></div>
+            <div className="flex items-center gap-2 text-sm"><Check className="w-4 h-4 text-emerald-500" /><span className="text-gray-700 dark:text-gray-400">GDPR Compliant</span></div>
           </div>
         </div>
       ),
@@ -113,26 +113,26 @@ export default function BotCapabilities() {
       description: 'Bot understands what customers mean, even with typos, slang, or different phrasings.',
       details: ['Recognizes intent from context', 'Handles typos gracefully', 'Understands variations'],
       visual: (
-        <div className="bg-slate-900 p-4 border border-slate-700 h-full">
-          <p className="text-xs text-gray-500 mb-3">Different messages, same understanding:</p>
+        <div className="bg-gray-100 dark:bg-slate-900 p-4 border border-gray-300 dark:border-slate-700 h-full">
+          <p className="text-xs text-gray-600 dark:text-gray-500 mb-3">Different messages, same understanding:</p>
           <div className="space-y-2">
             <div className="flex items-center gap-2">
               <ArrowRight className="w-3 h-3 text-azure-500" />
-              <span className="bg-slate-800 px-3 py-1.5 text-sm text-gray-300">"What's the price?"</span>
+              <span className="bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 px-3 py-1.5 text-sm text-gray-800 dark:text-gray-300">"What's the price?"</span>
             </div>
             <div className="flex items-center gap-2">
               <ArrowRight className="w-3 h-3 text-azure-500" />
-              <span className="bg-slate-800 px-3 py-1.5 text-sm text-gray-300">"how much does it cost"</span>
+              <span className="bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 px-3 py-1.5 text-sm text-gray-800 dark:text-gray-300">"how much does it cost"</span>
             </div>
             <div className="flex items-center gap-2">
               <ArrowRight className="w-3 h-3 text-azure-500" />
-              <span className="bg-slate-800 px-3 py-1.5 text-sm text-gray-300">"pricing pls"</span>
+              <span className="bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 px-3 py-1.5 text-sm text-gray-800 dark:text-gray-300">"pricing pls"</span>
             </div>
           </div>
-          <div className="mt-4 pt-3 border-t border-slate-700">
+          <div className="mt-4 pt-3 border-t border-gray-300 dark:border-slate-700">
             <div className="flex items-center gap-2">
               <Check className="w-4 h-4 text-emerald-500" />
-              <span className="text-sm text-emerald-400">Detected: Pricing inquiry</span>
+              <span className="text-sm text-emerald-600 dark:text-emerald-400">Detected: Pricing inquiry</span>
             </div>
           </div>
         </div>
@@ -144,22 +144,22 @@ export default function BotCapabilities() {
       description: 'Create branching conversations that adapt to customer responses and guide them to the right path.',
       details: ['Multiple conditional branches', 'Save conversation data', 'Reusable flow templates'],
       visual: (
-        <div className="bg-slate-900 p-4 border border-slate-700 h-full">
+        <div className="bg-gray-100 dark:bg-slate-900 p-4 border border-gray-300 dark:border-slate-700 h-full">
           <div className="flex flex-col items-center">
             <div className="bg-azure-500 px-4 py-2 text-sm text-white mb-3">Need help?</div>
-            <div className="w-px h-4 bg-slate-600" />
+            <div className="w-px h-4 bg-gray-400 dark:bg-slate-600" />
             <div className="flex gap-8">
               <div className="flex flex-col items-center">
-                <div className="w-px h-4 bg-slate-600" />
-                <div className="bg-emerald-600/20 border border-emerald-600/30 px-3 py-1.5 text-xs text-emerald-400">Yes</div>
-                <div className="w-px h-4 bg-slate-600" />
-                <div className="bg-slate-800 px-3 py-1.5 text-xs text-gray-400">Show options</div>
+                <div className="w-px h-4 bg-gray-400 dark:bg-slate-600" />
+                <div className="bg-emerald-100 dark:bg-emerald-600/20 border border-emerald-400 dark:border-emerald-600/30 px-3 py-1.5 text-xs text-emerald-700 dark:text-emerald-400">Yes</div>
+                <div className="w-px h-4 bg-gray-400 dark:bg-slate-600" />
+                <div className="bg-gray-200 dark:bg-slate-800 border border-gray-300 dark:border-slate-700 px-3 py-1.5 text-xs text-gray-700 dark:text-gray-400">Show options</div>
               </div>
               <div className="flex flex-col items-center">
-                <div className="w-px h-4 bg-slate-600" />
-                <div className="bg-red-600/20 border border-red-600/30 px-3 py-1.5 text-xs text-red-400">No</div>
-                <div className="w-px h-4 bg-slate-600" />
-                <div className="bg-slate-800 px-3 py-1.5 text-xs text-gray-400">End chat</div>
+                <div className="w-px h-4 bg-gray-400 dark:bg-slate-600" />
+                <div className="bg-red-100 dark:bg-red-600/20 border border-red-400 dark:border-red-600/30 px-3 py-1.5 text-xs text-red-700 dark:text-red-400">No</div>
+                <div className="w-px h-4 bg-gray-400 dark:bg-slate-600" />
+                <div className="bg-gray-200 dark:bg-slate-800 border border-gray-300 dark:border-slate-700 px-3 py-1.5 text-xs text-gray-700 dark:text-gray-400">End chat</div>
               </div>
             </div>
           </div>
@@ -172,16 +172,16 @@ export default function BotCapabilities() {
       description: 'Bot works around the clock without breaks, responding to customers even on holidays and after hours.',
       details: ['No breaks or vacations needed', 'Instant response anytime', 'Reduced wait times'],
       visual: (
-        <div className="bg-slate-900 p-4 border border-slate-700 h-full flex flex-col items-center justify-center">
+        <div className="bg-gray-100 dark:bg-slate-900 p-4 border border-gray-300 dark:border-slate-700 h-full flex flex-col items-center justify-center">
           <div className="relative">
-            <div className="text-6xl font-bold text-white">24<span className="text-azure-500">/</span>7</div>
+            <div className="text-6xl font-bold text-gray-900 dark:text-white">24<span className="text-azure-500">/</span>7</div>
             <div className="absolute -top-2 -right-2 w-4 h-4 bg-emerald-500 animate-pulse" />
           </div>
-          <p className="text-gray-500 text-sm mt-3">Always Online</p>
+          <p className="text-gray-600 dark:text-gray-500 text-sm mt-3">Always Online</p>
           <div className="flex gap-2 mt-4">
-            <span className="px-2 py-1 bg-slate-800 text-xs text-gray-400">Morning</span>
-            <span className="px-2 py-1 bg-slate-800 text-xs text-gray-400">Night</span>
-            <span className="px-2 py-1 bg-slate-800 text-xs text-gray-400">Holidays</span>
+            <span className="px-2 py-1 bg-gray-200 dark:bg-slate-800 border border-gray-300 dark:border-slate-700 text-xs text-gray-700 dark:text-gray-400">Morning</span>
+            <span className="px-2 py-1 bg-gray-200 dark:bg-slate-800 border border-gray-300 dark:border-slate-700 text-xs text-gray-700 dark:text-gray-400">Night</span>
+            <span className="px-2 py-1 bg-gray-200 dark:bg-slate-800 border border-gray-300 dark:border-slate-700 text-xs text-gray-700 dark:text-gray-400">Holidays</span>
           </div>
         </div>
       ),
@@ -192,16 +192,16 @@ export default function BotCapabilities() {
       description: 'Your data and customer data protected with top security standards and encryption.',
       details: ['End-to-end encryption', 'Automatic backups', 'GDPR compliant'],
       visual: (
-        <div className="bg-slate-900 p-4 border border-slate-700 h-full">
+        <div className="bg-gray-100 dark:bg-slate-900 p-4 border border-gray-300 dark:border-slate-700 h-full">
           <div className="flex items-center justify-center mb-4">
-            <div className="w-16 h-16 bg-emerald-500/20 border-2 border-emerald-500/50 flex items-center justify-center">
-              <Shield className="w-8 h-8 text-emerald-500" />
+            <div className="w-16 h-16 bg-emerald-100 dark:bg-emerald-500/20 border-2 border-emerald-400 dark:border-emerald-500/50 flex items-center justify-center">
+              <Shield className="w-8 h-8 text-emerald-600 dark:text-emerald-500" />
             </div>
           </div>
           <div className="space-y-2">
-            <div className="flex items-center gap-2 text-sm"><Check className="w-4 h-4 text-emerald-500" /><span className="text-gray-400">SSL/TLS Encryption</span></div>
-            <div className="flex items-center gap-2 text-sm"><Check className="w-4 h-4 text-emerald-500" /><span className="text-gray-400">Data Backup</span></div>
-            <div className="flex items-center gap-2 text-sm"><Check className="w-4 h-4 text-emerald-500" /><span className="text-gray-400">GDPR Compliant</span></div>
+            <div className="flex items-center gap-2 text-sm"><Check className="w-4 h-4 text-emerald-500" /><span className="text-gray-700 dark:text-gray-400">SSL/TLS Encryption</span></div>
+            <div className="flex items-center gap-2 text-sm"><Check className="w-4 h-4 text-emerald-500" /><span className="text-gray-700 dark:text-gray-400">Data Backup</span></div>
+            <div className="flex items-center gap-2 text-sm"><Check className="w-4 h-4 text-emerald-500" /><span className="text-gray-700 dark:text-gray-400">GDPR Compliant</span></div>
           </div>
         </div>
       ),

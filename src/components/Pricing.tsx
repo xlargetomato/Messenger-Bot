@@ -38,34 +38,40 @@ export default function Pricing() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {t.pricing.plans.map((plan, index) => (
-            <div key={index} className={`relative border p-8 ${plan.popular ? 'border-azure-500' : 'border-gray-200 dark:border-slate-700'} bg-white dark:bg-slate-800`}>
+            <div key={index} className={`relative border-2 p-8 transition-all ${plan.popular ? 'border-azure-500 bg-azure-50 dark:bg-slate-800' : 'border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800'}`}>
               {plan.popular && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  <span className="px-4 py-1 text-xs font-semibold text-white bg-azure-500">
+                <div className="absolute -top-3 left-6">
+                  <span className="px-3 py-1 text-xs font-bold text-white bg-azure-500 uppercase tracking-wide">
                     {language === 'ar' ? 'الأكثر شعبية' : 'Most Popular'}
                   </span>
                 </div>
               )}
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">{plan.name}</h3>
-              <p className="text-gray-700 dark:text-gray-300 text-sm mb-6">{plan.description}</p>
-              <div className="mb-6">
-                <span className="text-4xl font-bold text-gray-900 dark:text-white">{plan.price}</span>
-                <span className="text-gray-600 dark:text-gray-400">{plan.period}</span>
-              </div>
-              <ul className="space-y-3 mb-8">
-                {plan.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-start gap-3">
-                    <div className="w-5 h-5 bg-gray-200 dark:bg-slate-700 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <Check className="w-3 h-3 text-azure-500" />
+              <div className="pt-2">
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">{plan.name}</h3>
+                <p className="text-gray-600 dark:text-gray-400 text-sm mb-6">{plan.description}</p>
+                {plan.price ? (
+                  <div className="mb-8">
+                    <div className="flex items-baseline gap-1">
+                      <span className="text-5xl font-bold text-gray-900 dark:text-white">{plan.price}</span>
+                      <span className="text-gray-600 dark:text-gray-400 text-lg">{plan.period}</span>
                     </div>
-                    <span className="text-gray-700 dark:text-gray-300 text-sm">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-              <button className={`w-full py-3 px-6 font-semibold flex items-center justify-center gap-2 transition-all rounded-lg ${plan.popular ? 'bg-azure-500 text-white hover:bg-azure-600 shadow-lg hover:shadow-xl hover:scale-105' : 'bg-gray-200 dark:bg-slate-700 text-gray-900 dark:text-white hover:bg-gray-300 dark:hover:bg-slate-600'}`}>
-                {plan.cta}
-                <ArrowRight className="w-4 h-4 rtl:rotate-180" />
-              </button>
+                  </div>
+                ) : (
+                  <div className="mb-8">
+                  </div>
+                )}
+                <ul className="space-y-4 mb-8">
+                  {plan.features.map((feature, featureIndex) => (
+                    <li key={featureIndex} className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-azure-500 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700 dark:text-gray-300 text-sm">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                <button className={`w-full py-4 px-6 font-bold text-sm uppercase tracking-wide transition-all ${plan.popular ? 'bg-azure-500 text-white hover:bg-azure-600' : 'border-2 border-gray-900 dark:border-white text-gray-900 dark:text-white hover:bg-gray-900 hover:text-white dark:hover:bg-white dark:hover:text-gray-900'}`}>
+                  {plan.cta}
+                </button>
+              </div>
             </div>
           ))}
         </div>
