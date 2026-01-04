@@ -1,22 +1,48 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useLanguage } from '@/context/LanguageContext'
 import { Check, ArrowRight } from 'lucide-react'
 
 export default function Pricing() {
   const { t, language } = useLanguage()
   const [isYearly, setIsYearly] = useState(false)
+  const sectionRef = useRef<HTMLElement>(null)
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          // Add a small delay before triggering animations
+          setTimeout(() => {
+            setIsVisible(true)
+          }, 100)
+        }
+      },
+      { threshold: 0.2 } // Increased threshold so it triggers when 20% is visible
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current)
+      }
+    }
+  }, [])
 
   return (
-    <section id="pricing" className="py-24 px-4">
+    <section ref={sectionRef} id="pricing" className="py-24 px-4">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 border-2 border-violet-200 dark:border-violet-900 bg-gradient-to-r from-violet-50 to-purple-50 dark:from-slate-800 dark:to-slate-800/50 mb-6 shadow-md rounded-full">
+          <div className={`inline-flex items-center gap-2 px-4 py-2 border-2 border-violet-200 dark:border-violet-900 bg-gradient-to-r from-violet-50 to-purple-50 dark:from-slate-800 dark:to-slate-800/50 mb-6 shadow-md rounded-full ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
             <span className="w-2 h-2 bg-azure-500 rounded-full" />
             <span className="text-sm font-semibold text-gray-700 dark:text-gray-200">{t.pricing.label}</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4 ${isVisible ? 'animate-slide-up' : 'opacity-0'}`}>
             {t.pricing.title}{' '}
             <span className="relative inline-block text-azure-500">
               {t.pricing.titleHighlight}
@@ -25,7 +51,7 @@ export default function Pricing() {
               </svg>
             </span>
           </h2>
-          <p className="text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">{t.pricing.subtitle}</p>
+          <p className={`text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto ${isVisible ? 'animate-fade-in' : 'opacity-0'}`} style={{ animationDelay: '0.2s' }}>{t.pricing.subtitle}</p>
         </div>
 
         <div className="flex items-center justify-center gap-4 mb-12">
@@ -40,7 +66,7 @@ export default function Pricing() {
           {t.pricing.plans.map((plan, index) => (
             <div 
               key={index} 
-              className={`relative border-2 p-8 transition-all duration-300 hover:shadow-xl hover:-translate-y-2 animate-slide-up ${plan.popular ? 'border-azure-500 bg-azure-50 dark:bg-slate-800' : 'border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800'}`}
+              className={`relative border-2 p-8 transition-all duration-300 hover:shadow-xl hover:-translate-y-2 ${isVisible ? 'animate-slide-up' : 'opacity-0'} ${plan.popular ? 'border-azure-500 bg-azure-50 dark:bg-slate-800' : 'border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800'}`}
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               {plan.popular && (

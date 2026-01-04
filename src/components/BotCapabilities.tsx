@@ -2,18 +2,35 @@
 
 import { useLanguage } from '@/context/LanguageContext'
 import { Brain, GitBranch, Clock, Shield, Bot, Check, ArrowRight } from 'lucide-react'
-import { useState, useEffect } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 export default function BotCapabilities() {
   const { language } = useLanguage()
-  const [animationKey, setAnimationKey] = useState(0)
+  const sectionRef = useRef<HTMLElement>(null)
+  const [isVisible, setIsVisible] = useState(false)
 
-  // Reset animations every 5 seconds
   useEffect(() => {
-    const interval = setInterval(() => {
-      setAnimationKey(prev => prev + 1)
-    }, 5000)
-    return () => clearInterval(interval)
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          // Add a small delay before triggering animations
+          setTimeout(() => {
+            setIsVisible(true)
+          }, 100)
+        }
+      },
+      { threshold: 0.2 } // Increased threshold so it triggers when 20% is visible
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current)
+      }
+    }
   }, [])
 
   const capabilities = language === 'ar' ? [
@@ -23,7 +40,7 @@ export default function BotCapabilities() {
       description: 'يفهم البوت ما يقصده العملاء، حتى لو كتبوا بطرق مختلفة أو بأخطاء إملائية.',
       details: ['يتعرف على النية من السياق', 'يفهم اللهجات المختلفة', 'يتعامل مع الأخطاء الإملائية'],
       visual: (
-        <div key={animationKey} className="bg-gray-100 dark:bg-slate-900 p-4 border border-gray-300 dark:border-slate-700 h-full">
+        <div className="bg-gray-100 dark:bg-slate-900 p-4 border border-gray-300 dark:border-slate-700 h-full">
           <p className="text-xs text-gray-600 dark:text-gray-500 mb-3">رسائل مختلفة، نفس الفهم:</p>
           <div className="space-y-2">
             <div className="flex items-center gap-2 animate-slide-in-right">
@@ -54,7 +71,7 @@ export default function BotCapabilities() {
       description: 'أنشئ محادثات متفرعة تتكيف مع ردود العميل وتوجهه للمسار الصحيح.',
       details: ['تفرعات شرطية متعددة', 'حفظ بيانات المحادثة', 'إعادة استخدام التدفقات'],
       visual: (
-        <div key={animationKey} className="bg-gray-100 dark:bg-slate-900 p-4 border border-gray-300 dark:border-slate-700 h-full">
+        <div className="bg-gray-100 dark:bg-slate-900 p-4 border border-gray-300 dark:border-slate-700 h-full">
           <div className="flex flex-col items-center">
             <div className="bg-azure-500 px-4 py-2 text-sm text-white mb-3 animate-scale-in">هل تريد المساعدة؟</div>
             <div className="w-px h-4 bg-gray-400 dark:bg-slate-600 animate-grow-height" style={{ animationDelay: '0.3s' }} />
@@ -82,7 +99,7 @@ export default function BotCapabilities() {
       description: 'البوت يعمل 24/7 بدون توقف، يرد على العملاء حتى في العطلات وخارج ساعات العمل.',
       details: ['لا يحتاج راحة أو إجازات', 'رد فوري في أي وقت', 'تقليل وقت الانتظار'],
       visual: (
-        <div key={animationKey} className="bg-gray-100 dark:bg-slate-900 p-4 border border-gray-300 dark:border-slate-700 h-full flex flex-col items-center justify-center">
+        <div className="bg-gray-100 dark:bg-slate-900 p-4 border border-gray-300 dark:border-slate-700 h-full flex flex-col items-center justify-center">
           <div className="relative animate-scale-in">
             <div className="text-6xl font-bold text-gray-900 dark:text-white">24<span className="text-azure-500">/</span>7</div>
             <div className="absolute -top-2 -right-2 w-4 h-4 bg-emerald-500 animate-pulse" />
@@ -102,7 +119,7 @@ export default function BotCapabilities() {
       description: 'بياناتك وبيانات عملائك محمية بأعلى معايير الأمان والتشفير.',
       details: ['تشفير البيانات', 'نسخ احتياطي تلقائي', 'توافق مع GDPR'],
       visual: (
-        <div key={animationKey} className="bg-gray-100 dark:bg-slate-900 p-4 border border-gray-300 dark:border-slate-700 h-full">
+        <div className="bg-gray-100 dark:bg-slate-900 p-4 border border-gray-300 dark:border-slate-700 h-full">
           <div className="flex items-center justify-center mb-4 animate-scale-in">
             <div className="w-16 h-16 bg-emerald-100 dark:bg-emerald-500/20 border-2 border-emerald-400 dark:border-emerald-500/50 flex items-center justify-center">
               <Shield className="w-8 h-8 text-emerald-600 dark:text-emerald-500" />
@@ -123,7 +140,7 @@ export default function BotCapabilities() {
       description: 'Bot understands what customers mean, even with typos, slang, or different phrasings.',
       details: ['Recognizes intent from context', 'Handles typos gracefully', 'Understands variations'],
       visual: (
-        <div key={animationKey} className="bg-gray-100 dark:bg-slate-900 p-4 border border-gray-300 dark:border-slate-700 h-full">
+        <div className="bg-gray-100 dark:bg-slate-900 p-4 border border-gray-300 dark:border-slate-700 h-full">
           <p className="text-xs text-gray-600 dark:text-gray-500 mb-3">Different messages, same understanding:</p>
           <div className="space-y-2">
             <div className="flex items-center gap-2 animate-slide-in-right">
@@ -154,7 +171,7 @@ export default function BotCapabilities() {
       description: 'Create branching conversations that adapt to customer responses and guide them to the right path.',
       details: ['Multiple conditional branches', 'Save conversation data', 'Reusable flow templates'],
       visual: (
-        <div key={animationKey} className="bg-gray-100 dark:bg-slate-900 p-4 border border-gray-300 dark:border-slate-700 h-full">
+        <div className="bg-gray-100 dark:bg-slate-900 p-4 border border-gray-300 dark:border-slate-700 h-full">
           <div className="flex flex-col items-center">
             <div className="bg-azure-500 px-4 py-2 text-sm text-white mb-3 animate-scale-in">Need help?</div>
             <div className="w-px h-4 bg-gray-400 dark:bg-slate-600 animate-grow-height" style={{ animationDelay: '0.3s' }} />
@@ -182,7 +199,7 @@ export default function BotCapabilities() {
       description: 'Bot works around the clock without breaks, responding to customers even on holidays and after hours.',
       details: ['No breaks or vacations needed', 'Instant response anytime', 'Reduced wait times'],
       visual: (
-        <div key={animationKey} className="bg-gray-100 dark:bg-slate-900 p-4 border border-gray-300 dark:border-slate-700 h-full flex flex-col items-center justify-center">
+        <div className="bg-gray-100 dark:bg-slate-900 p-4 border border-gray-300 dark:border-slate-700 h-full flex flex-col items-center justify-center">
           <div className="relative animate-scale-in">
             <div className="text-6xl font-bold text-gray-900 dark:text-white">24<span className="text-azure-500">/</span>7</div>
             <div className="absolute -top-2 -right-2 w-4 h-4 bg-emerald-500 animate-pulse" />
@@ -202,7 +219,7 @@ export default function BotCapabilities() {
       description: 'Your data and customer data protected with top security standards and encryption.',
       details: ['End-to-end encryption', 'Automatic backups', 'GDPR compliant'],
       visual: (
-        <div key={animationKey} className="bg-gray-100 dark:bg-slate-900 p-4 border border-gray-300 dark:border-slate-700 h-full">
+        <div className="bg-gray-100 dark:bg-slate-900 p-4 border border-gray-300 dark:border-slate-700 h-full">
           <div className="flex items-center justify-center mb-4 animate-scale-in">
             <div className="w-16 h-16 bg-emerald-100 dark:bg-emerald-500/20 border-2 border-emerald-400 dark:border-emerald-500/50 flex items-center justify-center">
               <Shield className="w-8 h-8 text-emerald-600 dark:text-emerald-500" />
@@ -219,27 +236,27 @@ export default function BotCapabilities() {
   ]
 
   return (
-    <section className="py-24 px-4">
+    <section ref={sectionRef} className="py-24 px-4">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 border-2 border-azure-200 dark:border-azure-900 bg-gradient-to-r from-azure-50 to-blue-50 dark:from-slate-800 dark:to-slate-800/50 mb-6 shadow-md rounded-full">
+          <div className={`inline-flex items-center gap-2 px-4 py-2 border-2 border-azure-200 dark:border-azure-900 bg-gradient-to-r from-azure-50 to-blue-50 dark:from-slate-800 dark:to-slate-800/50 mb-6 shadow-md rounded-full ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
             <Bot className="w-4 h-4 text-azure-500 animate-pulse" />
             <span className="text-sm font-semibold text-gray-700 dark:text-gray-200">{language === 'ar' ? 'قدرات البوت' : 'Bot Capabilities'}</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4 ${isVisible ? 'animate-slide-up' : 'opacity-0'}`}>
             {language === 'ar' ? 'ماذا يمكن للبوت ' : 'What Your Bot '}
             <span className="relative inline-block text-azure-500">
               {language === 'ar' ? 'أن يفعل' : 'Can Do'}
               <span className="absolute -inset-1 bg-azure-500/10 blur-xl rounded-lg -z-10"></span>
             </span>
           </h2>
-          <p className="text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">{language === 'ar' ? 'قدرات متقدمة تجعل البوت يتصرف كموظف حقيقي' : 'Advanced capabilities that make your bot act like a real employee'}</p>
+          <p className={`text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto ${isVisible ? 'animate-fade-in' : 'opacity-0'}`} style={{ animationDelay: '0.2s' }}>{language === 'ar' ? 'قدرات متقدمة تجعل البوت يتصرف كموظف حقيقي' : 'Advanced capabilities that make your bot act like a real employee'}</p>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {capabilities.map((cap, index) => {
             const Icon = cap.icon
             return (
-              <div key={index} className="group border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800 overflow-hidden hover:border-azure-400 dark:hover:border-azure-600 transition-all">
+              <div key={index} className={`group border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800 overflow-hidden hover:border-azure-400 dark:hover:border-azure-600 transition-all ${isVisible ? 'animate-slide-up' : 'opacity-0'}`} style={{ animationDelay: `${index * 0.15}s` }}>
                 <div className="grid grid-cols-1 md:grid-cols-2">
                   <div className="p-6">
                     <div className="w-12 h-12 bg-gray-200 dark:bg-slate-700 border border-gray-300 dark:border-slate-600 flex items-center justify-center mb-4">
@@ -263,3 +280,4 @@ export default function BotCapabilities() {
     </section>
   )
 }
+
