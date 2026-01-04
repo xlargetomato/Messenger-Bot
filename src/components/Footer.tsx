@@ -2,98 +2,70 @@
 
 import Link from 'next/link'
 import { useLanguage } from '@/context/LanguageContext'
-import { useTheme } from '@/context/ThemeContext'
-import { MessageCircle, Sun, Moon, Languages } from 'lucide-react'
+import { MessageCircle } from 'lucide-react'
 
 export default function Footer() {
-  const { t, language, toggleLanguage } = useLanguage()
-  const { theme, toggleTheme } = useTheme()
+  const { t } = useLanguage()
+
+  const productLinks = [
+    { href: '/#features', label: t.footer.links.features },
+    { href: '/#pricing', label: t.footer.links.pricing },
+  ]
+
+  const companyLinks = [
+    { href: '#', label: t.footer.links.about },
+    { href: '#', label: t.footer.links.contact },
+  ]
+
+  const legalLinks = [
+    { href: '#', label: t.footer.links.privacy },
+    { href: '/terms', label: t.footer.links.terms },
+  ]
 
   return (
-    <footer className="py-12 px-4 border-t border-zinc-200 dark:border-zinc-800">
-      <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10">
-          <div className="col-span-2 md:col-span-1">
-            <Link href="/" className="flex items-center gap-2 mb-3">
-              <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-cyan-500 to-teal-600 flex items-center justify-center">
-                <MessageCircle className="w-3.5 h-3.5 text-white" />
+    <footer className="border-t border-gray-200 dark:border-slate-700">
+      <div className="max-w-6xl mx-auto px-4 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
+          <div className="md:col-span-1">
+            <Link href="/" className="flex items-center gap-2 mb-4">
+              <div className="w-9 h-9 bg-azure-500 flex items-center justify-center">
+                <MessageCircle className="w-5 h-5 text-white" />
               </div>
-              <span className="text-sm font-semibold text-zinc-900 dark:text-white">MessengerBots</span>
+              <span className="text-lg font-semibold text-gray-900 dark:text-white">ServiceHub</span>
             </Link>
-            <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
-              {t.footer.description}
-            </p>
+            <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">{t.footer.description}</p>
           </div>
 
           <div>
-            <h4 className="text-sm font-medium text-zinc-900 dark:text-white mb-3">{t.footer.product}</h4>
-            <ul className="space-y-2">
-              <li>
-                <Link href="/#features" className="text-sm text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">
-                  {t.footer.links.features}
-                </Link>
-              </li>
-              <li>
-                <Link href="/#pricing" className="text-sm text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">
-                  {t.footer.links.pricing}
-                </Link>
-              </li>
+            <h4 className="font-semibold text-gray-900 dark:text-white mb-4">{t.footer.product}</h4>
+            <ul className="space-y-3">
+              {productLinks.map((link) => (
+                <li key={link.href}><Link href={link.href} className="text-sm text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">{link.label}</Link></li>
+              ))}
             </ul>
           </div>
 
           <div>
-            <h4 className="text-sm font-medium text-zinc-900 dark:text-white mb-3">{t.footer.company}</h4>
-            <ul className="space-y-2">
-              <li>
-                <a href="#" className="text-sm text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">
-                  {t.footer.links.about}
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-sm text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">
-                  {t.footer.links.contact}
-                </a>
-              </li>
+            <h4 className="font-semibold text-gray-900 dark:text-white mb-4">{t.footer.company}</h4>
+            <ul className="space-y-3">
+              {companyLinks.map((link) => (
+                <li key={link.label}><Link href={link.href} className="text-sm text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">{link.label}</Link></li>
+              ))}
             </ul>
           </div>
 
           <div>
-            <h4 className="text-sm font-medium text-zinc-900 dark:text-white mb-3">{t.footer.legal}</h4>
-            <ul className="space-y-2">
-              <li>
-                <a href="#" className="text-sm text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">
-                  {t.footer.links.privacy}
-                </a>
-              </li>
-              <li>
-                <Link href="/terms" className="text-sm text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">
-                  {t.footer.links.terms}
-                </Link>
-              </li>
+            <h4 className="font-semibold text-gray-900 dark:text-white mb-4">{t.footer.legal}</h4>
+            <ul className="space-y-3">
+              {legalLinks.map((link) => (
+                <li key={link.label}><Link href={link.href} className="text-sm text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">{link.label}</Link></li>
+              ))}
             </ul>
           </div>
         </div>
 
-        <div className="pt-6 border-t border-zinc-200 dark:border-zinc-800 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-zinc-400 dark:text-zinc-500">
-            {t.footer.copyright}
-          </p>
-          
-          <div className="flex items-center border border-zinc-200 dark:border-zinc-700 rounded-lg divide-x divide-zinc-200 dark:divide-zinc-700">
-            <button
-              onClick={toggleLanguage}
-              className="flex items-center gap-1.5 px-3 py-1.5 text-sm text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors"
-            >
-              <Languages className="w-3.5 h-3.5" />
-              <span>{language === 'en' ? 'العربية' : 'English'}</span>
-            </button>
-            <button
-              onClick={toggleTheme}
-              className="p-2 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors"
-            >
-              {theme === 'light' ? <Moon className="w-3.5 h-3.5" /> : <Sun className="w-3.5 h-3.5" />}
-            </button>
-          </div>
+        <div className="mt-12 pt-8 border-t border-gray-200 dark:border-slate-700">
+          <p className="text-sm text-gray-600 dark:text-gray-400 text-center">{t.footer.copyright}</p>
         </div>
       </div>
     </footer>

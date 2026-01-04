@@ -3,31 +3,25 @@
 import Header from '@/components/Header'
 import Hero from '@/components/Hero'
 import Features from '@/components/Features'
+import BotCapabilities from '@/components/BotCapabilities'
+import AutomationDemo from '@/components/AutomationDemo'
+import UseCases from '@/components/UseCases'
 import Pricing from '@/components/Pricing'
 import FAQ from '@/components/FAQ'
 import CTA from '@/components/CTA'
 import Footer from '@/components/Footer'
-
-function Divider() {
-  return (
-    <div className="max-w-6xl mx-auto px-4">
-      <div className="h-px bg-gradient-to-r from-transparent via-zinc-200 dark:via-zinc-800 to-transparent" />
-    </div>
-  )
-}
 
 export default function Home() {
   return (
     <main className="min-h-screen">
       <Header />
       <Hero />
-      <Divider />
       <Features />
-      <Divider />
+      <BotCapabilities />
+      <AutomationDemo />
+      <UseCases />
       <Pricing />
-      <Divider />
       <FAQ />
-      <Divider />
       <CTA />
       <Footer />
     </main>
