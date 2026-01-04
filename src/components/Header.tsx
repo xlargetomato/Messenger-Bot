@@ -48,7 +48,7 @@ export default function Header() {
               {/* Desktop Actions */}
               <div className="hidden md:flex items-center gap-4">
                 {/* Controls */}
-                <div className="flex items-center border border-gray-200 dark:border-slate-600 divide-x divide-gray-200 dark:divide-slate-600 rounded-lg overflow-hidden">
+                <div className="flex items-center border border-gray-200 dark:border-slate-600 divide-x divide-gray-200 dark:divide-slate-600 overflow-hidden">
                   <button
                     onClick={toggleLanguage}
                     className="flex items-center gap-1.5 px-3 py-2 text-sm text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white transition-colors"
@@ -70,7 +70,7 @@ export default function Header() {
                 {/* CTA */}
                 <Link
                   href="/#pricing"
-                  className="px-4 py-2 bg-azure-500 hover:bg-azure-600 text-white text-sm font-medium transition-colors rounded-lg"
+                  className="px-4 py-2 bg-azure-500 hover:bg-azure-600 text-white text-sm font-medium transition-colors"
                 >
                   {language === 'ar' ? 'ابدأ الآن' : 'Get Started'}
                 </Link>
@@ -103,7 +103,7 @@ export default function Header() {
                 </nav>
 
                 <div className="flex items-center gap-2 pt-3 border-t border-gray-200 dark:border-slate-700">
-                  <div className="flex items-center border border-gray-200 dark:border-slate-600 divide-x divide-gray-200 dark:divide-slate-600 rounded-lg overflow-hidden">
+                  <div className="flex items-center border border-gray-200 dark:border-slate-600 divide-x divide-gray-200 dark:divide-slate-600 overflow-hidden">
                     <button
                       onClick={toggleLanguage}
                       className="flex items-center gap-1.5 px-3 py-2 text-sm text-gray-700 dark:text-gray-200"
@@ -118,7 +118,7 @@ export default function Header() {
                   <Link
                     href="/#pricing"
                     onClick={() => setIsMenuOpen(false)}
-                    className="flex-1 text-center px-4 py-2 bg-azure-500 text-white text-sm font-medium rounded-lg"
+                    className="flex-1 text-center px-4 py-2 bg-azure-500 text-white text-sm font-medium"
                   >
                     {language === 'ar' ? 'ابدأ الآن' : 'Get Started'}
                   </Link>

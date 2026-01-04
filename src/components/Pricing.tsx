@@ -38,7 +38,11 @@ export default function Pricing() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {t.pricing.plans.map((plan, index) => (
-            <div key={index} className={`relative border-2 p-8 transition-all ${plan.popular ? 'border-azure-500 bg-azure-50 dark:bg-slate-800' : 'border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800'}`}>
+            <div 
+              key={index} 
+              className={`relative border-2 p-8 transition-all duration-300 hover:shadow-xl hover:-translate-y-2 animate-slide-up ${plan.popular ? 'border-azure-500 bg-azure-50 dark:bg-slate-800' : 'border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800'}`}
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
               {plan.popular && (
                 <div className="absolute -top-3 left-6">
                   <span className="px-3 py-1 text-xs font-bold text-white bg-azure-500 uppercase tracking-wide">
@@ -68,7 +72,7 @@ export default function Pricing() {
                     </li>
                   ))}
                 </ul>
-                <button className={`w-full py-4 px-6 font-bold text-sm uppercase tracking-wide transition-all ${plan.popular ? 'bg-azure-500 text-white hover:bg-azure-600' : 'border-2 border-gray-900 dark:border-white text-gray-900 dark:text-white hover:bg-gray-900 hover:text-white dark:hover:bg-white dark:hover:text-gray-900'}`}>
+                <button className={`w-full py-4 px-6 font-bold text-sm uppercase tracking-wide transition-all duration-300 hover:scale-105 ${plan.popular ? 'bg-azure-500 text-white hover:bg-azure-600 hover:shadow-lg' : 'border-2 border-gray-900 dark:border-white text-gray-900 dark:text-white hover:bg-gray-900 hover:text-white dark:hover:bg-white dark:hover:text-gray-900'}`}>
                   {plan.cta}
                 </button>
               </div>

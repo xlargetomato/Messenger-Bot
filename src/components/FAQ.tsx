@@ -30,7 +30,11 @@ export default function FAQ() {
           {t.faq.items.map((item, index) => {
             const isOpen = openIndex === index
             return (
-              <div key={index} className="border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800 overflow-hidden">
+              <div 
+                key={index} 
+                className="border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800 overflow-hidden hover:border-azure-400 dark:hover:border-azure-600 transition-all duration-300 animate-slide-up"
+                style={{ animationDelay: `${index * 0.05}s` }}
+              >
                 <button onClick={() => setOpenIndex(isOpen ? null : index)} className="w-full flex items-center justify-between p-5 text-left">
                   <span className="font-semibold text-gray-900 dark:text-white pr-4">{item.question}</span>
                   <div className={`w-8 h-8 flex items-center justify-center flex-shrink-0 transition-colors ${isOpen ? 'bg-azure-100 dark:bg-azure-900/40' : 'bg-gray-200 dark:bg-slate-700'}`}>
